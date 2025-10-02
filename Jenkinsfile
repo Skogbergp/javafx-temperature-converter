@@ -8,7 +8,7 @@ pipeline {
     environment {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
-        DOCKER_IMAGE = 'amirdirin/javafx_with_db2'
+        DOCKER_IMAGE = 'hatrik/tempconvjavafx'
         DOCKER_TAG = 'latest'
     }
 
@@ -16,7 +16,7 @@ pipeline {
         stage('Setup Maven') {
             steps {
                 script {
-                    def mvnHome = tool name: 'Maven3', type: 'maven'
+                    def mvnHome = tool name: 'Maven 3', type: 'maven'
                     env.PATH = "${mvnHome}/bin:${env.PATH}"
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/ADirin/javafx_with_mariadb.git'
+                git branch: 'main', url: 'https://github.com/Skogbergp/javafx-temperature-converter.git'
             }
         }
 
